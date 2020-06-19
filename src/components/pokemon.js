@@ -1,10 +1,15 @@
 import React from "react";
 
-import { makeStyles } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
+import Chip from "@material-ui/core/Chip";
+import { makeStyles } from "@material-ui/core";
 import CardContent from "@material-ui/core/CardContent";
 
 const usePokemonStyles = makeStyles((theme) => ({
+  card: {
+      width:"25%",
+      border:"1px solid #ddd"
+  },
   type: {
     display: "flex",
   },
@@ -12,31 +17,39 @@ const usePokemonStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
     marginLeft: theme.spacing(1),
   },
+  label: {
+    margin: theme.spacing(1, 0, 1, 0),
+  },
 }));
 
 export default function Pokemon({ pokemon }) {
   const classes = usePokemonStyles();
   return (
-    <Card>
+    <Card className={classes.card}>
       <CardContent>
-        {!pokemon ? <p>Please Select a Pokemon to see the details</p> : null}
+        {!pokemon ? <strong>Please Select a Pokemon from the left side bar</strong> : null}
         {pokemon && (
           <>
-            <div>Name: {pokemon.name.english} </div>
+            <div>
+              Name: <strong>{pokemon.name.english}</strong>
+            </div>
             <br />
             <div className={classes.type}>
-              <label>Type: </label>
+              <label className={classes.label}>Type: </label>
               {pokemon.type.map((item, index) => (
-                <div key={index} className={classes.item}>
-                  {" "}
-                  {item}
+                <div key={index}>
+                  <Chip label={item} color="primary" className={classes.item} />
                 </div>
               ))}
             </div>
             <br />
-            <div>Attack Level : {pokemon.base.Attack}</div>
+            <div>
+              Attack Level : <strong>{pokemon.base.Attack}</strong>
+            </div>
             <br />
-            <div>Defense Level : {pokemon.base.Defense}</div>
+            <div>
+              Defense Level : <strong>{pokemon.base.Defense}</strong>
+            </div>
           </>
         )}
       </CardContent>
