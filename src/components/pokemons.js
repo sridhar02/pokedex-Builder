@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Pokemon from "./pokemon";
 
-import { makeStyles, Button } from "@material-ui/core";
+import { makeStyles, Button, Typography } from "@material-ui/core";
 const pokemons = require("../pokedex.json");
 
 const usePokemonsStyles = makeStyles((theme) => ({
@@ -11,6 +11,7 @@ const usePokemonsStyles = makeStyles((theme) => ({
   list: {
     width: "20%",
     borderRight: "1px solid black",
+    overflowY: "auto",
   },
   button: {
     width: "100%",
@@ -22,7 +23,10 @@ const usePokemonsStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    height: "80vh",
+    height: "100vh",
+  },
+  title: {
+    margin: theme.spacing(2, 0, 2, 0),
   },
 }));
 
@@ -33,7 +37,9 @@ function Pokemons() {
   return (
     <div className={classes.container}>
       <div className={classes.list}>
-        <h4>Pokedex Builder</h4>
+        <Typography variant="h6" className={classes.title}>
+          Pokedex Builder
+        </Typography>
         {pokemons.map((pokemon) => (
           <div key={pokemon.id}>
             <Button
