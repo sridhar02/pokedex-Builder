@@ -2,20 +2,22 @@ import React from "react";
 
 import Card from "@material-ui/core/Card";
 import Chip from "@material-ui/core/Chip";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, Typography } from "@material-ui/core";
 import CardContent from "@material-ui/core/CardContent";
 
 const usePokemonStyles = makeStyles((theme) => ({
   card: {
-      width:"25%",
-      border:"1px solid #ddd"
+    width: "25%",
+    border: "1px solid #ddd",
+    position:"fixed",
   },
   type: {
     display: "flex",
   },
   item: {
-    marginRight: theme.spacing(1),
+    marginRight: theme.spacing(0.5),
     marginLeft: theme.spacing(1),
+    fontWeight:"bold"
   },
   label: {
     margin: theme.spacing(1, 0, 1, 0),
@@ -27,7 +29,11 @@ export default function Pokemon({ pokemon }) {
   return (
     <Card className={classes.card}>
       <CardContent>
-        {!pokemon ? <strong>Please Select a Pokemon from the left side bar</strong> : null}
+        {!pokemon ? (
+          <Typography variant="subtitle2">
+            Please Select a Pokemon from the left side bar
+          </Typography>
+        ) : null}
         {pokemon && (
           <>
             <div>
