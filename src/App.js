@@ -1,5 +1,5 @@
 import React from "react";
-import Pokemons from "./components/pokemons";
+import PokemonsList from "./components/PokemonsList";
 import { makeStyles } from "@material-ui/core";
 
 const useAppStyles = makeStyles((theme) => ({
@@ -11,7 +11,7 @@ function App() {
   const classes = useAppStyles();
   return (
     <div className={classes.App}>
-      <Pokemons />
+      <PokemonsList />
     </div>
   );
 }
