@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Pokemon from "./pokemon";
+import Pokemon from "./Pokemon";
 
 import { makeStyles, Button, Typography } from "@material-ui/core";
 const pokemons = require("../pokedex.json");
@@ -30,7 +30,7 @@ const usePokemonsStyles = makeStyles((theme) => ({
   },
 }));
 
-function Pokemons() {
+function PokemonsList() {
   const classes = usePokemonsStyles();
   const [pokemon, setPokemon] = useState("");
   console.log(pokemon);
@@ -58,4 +58,4 @@ function Pokemons() {
   );
 }
 
-export default Pokemons;
+export default PokemonsList;
