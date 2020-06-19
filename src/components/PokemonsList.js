@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import Pokemon from "./Pokemon";
-
+import matchSorter from "match-sorter";
 import { makeStyles, Button, Typography } from "@material-ui/core";
+
+import Pokemon from "./Pokemon";
+import Search from "./Search";
 const pokemons = require("../pokedex.json");
 
 const usePokemonsStyles = makeStyles((theme) => ({
@@ -32,15 +34,19 @@ const usePokemonsStyles = makeStyles((theme) => ({
 
 function PokemonsList() {
   const classes = usePokemonsStyles();
+
   const [pokemon, setPokemon] = useState("");
-  console.log(pokemon);
+  const [search, setSearch] = useState(null);
+
+  const matchedPokemonsList = matchSorter(pokemons, search, { keys: ["name.english"] });
   return (
     <div className={classes.container}>
       <div className={classes.list}>
         <Typography variant="h6" className={classes.title}>
           Pokedex Builder
         </Typography>
-        {pokemons.map((pokemon) => (
+        <Search search={search} setSearch={setSearch} />
+        {matchedPokemonsList.map((pokemon) => (
           <div key={pokemon.id}>
             <Button
               className={classes.button}
