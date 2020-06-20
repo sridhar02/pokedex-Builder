@@ -46,7 +46,6 @@ export default function Pokemon({ pokemon, fetchPokemons, setPokemon }) {
         fetchPokemons();
       }
     } catch (error) {
-      console.log(error);
       alert(error);
     }
   };

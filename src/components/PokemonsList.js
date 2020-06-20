@@ -50,7 +50,6 @@ function PokemonsList() {
         setPokemons(response.data);
       }
     } catch (error) {
-      console.log(error);
       alert(error);
     }
   };
@@ -68,7 +67,7 @@ function PokemonsList() {
         <Typography variant="h6" className={classes.title}>
           Pokedex Builder
         </Typography>
-        <NewPokemon fetchPokemons={fetchPokemons} />  
+        <NewPokemon fetchPokemons={fetchPokemons} />
         <Search search={search} setSearch={setSearch} pokemons={pokemons} />
         {matchedPokemonsList.map((pokemon) => (
           <div key={pokemon.id}>
