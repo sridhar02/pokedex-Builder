@@ -90,6 +90,7 @@ export default function Pokemon({ pokemon, fetchPokemons, setPokemon }) {
               <Button
                 variant="contained"
                 color="secondary"
+                id="delete"
                 onClick={() => deletePokemon(pokemon.id)}
               >
                 Delete
