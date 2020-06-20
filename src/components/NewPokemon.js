@@ -12,9 +12,9 @@ export default function NewPokemon({ fetchPokemons }) {
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [open, setOpen] = useState(false);
+  const [description, setDescription] = useState("");
   const [attackLevel, setAttackLevel] = useState("");
   const [defenceLevel, setDefenceLevel] = useState("");
-  const [description, setDescription] = useState();
 
   const dialogueOpen = () => {
     setOpen(true);
