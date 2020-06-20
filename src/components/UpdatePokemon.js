@@ -73,16 +73,18 @@ export default function UpdatePokemon({ pokemon, fetchPokemons, setPokemon }) {
             </DialogTitle>
             <DialogContent>
               <TextField
+                required
                 value={name}
                 onChange={(event) => setName(event.target.value)}
                 autoFocus
                 margin="dense"
                 id="name"
                 label="Name"
-                // type="text"
+                type="text"
                 fullWidth
               />
               <TextField
+                required
                 value={type}
                 onChange={(event) => setType(event.target.value)}
                 autoFocus
@@ -93,21 +95,23 @@ export default function UpdatePokemon({ pokemon, fetchPokemons, setPokemon }) {
                 fullWidth
               />
               <TextField
+                required
                 value={attackLevel}
                 onChange={(event) => setAttackLevel(event.target.value)}
                 autoFocus
                 margin="dense"
-                id="name"
+                id="attack"
                 label="Attack Level"
                 type="number"
                 fullWidth
               />
               <TextField
+                required
                 value={defenceLevel}
                 onChange={(event) => setDefenceLevel(event.target.value)}
                 autoFocus
                 margin="dense"
-                id="name"
+                id="defense"
                 label="Defense Level"
                 type="number"
                 fullWidth
@@ -117,7 +121,7 @@ export default function UpdatePokemon({ pokemon, fetchPokemons, setPokemon }) {
                 onChange={(event) => setDescription(event.target.value)}
                 autoFocus
                 margin="dense"
-                id="name"
+                id="description"
                 label="Description"
                 type="text"
                 fullWidth

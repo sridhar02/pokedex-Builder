@@ -77,6 +77,7 @@ export default function NewPokemon({ fetchPokemons }) {
           </DialogTitle>
           <DialogContent>
             <TextField
+              required
               value={name}
               onChange={(event) => setName(event.target.value)}
               autoFocus
@@ -87,6 +88,7 @@ export default function NewPokemon({ fetchPokemons }) {
               fullWidth
             />
             <TextField
+              required
               value={type}
               onChange={(event) => setType(event.target.value)}
               autoFocus
@@ -97,6 +99,7 @@ export default function NewPokemon({ fetchPokemons }) {
               fullWidth
             />
             <TextField
+              required
               value={attackLevel}
               onChange={(event) => setAttackLevel(event.target.value)}
               autoFocus
@@ -107,6 +110,7 @@ export default function NewPokemon({ fetchPokemons }) {
               fullWidth
             />
             <TextField
+              required
               value={defenceLevel}
               onChange={(event) => setDefenceLevel(event.target.value)}
               autoFocus
