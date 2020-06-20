@@ -3,7 +3,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-const pokemons = require("../pokedex.json");
 
 const useSearchStyles = makeStyles((theme) => ({
   autoComplete: {
@@ -11,7 +10,7 @@ const useSearchStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Search({ search, setSearch }) {
+export default function Search({ search, setSearch, pokemons }) {
   const classes = useSearchStyles();
   return (
     <div>
@@ -30,7 +29,7 @@ export default function Search({ search, setSearch }) {
           />
         )}
       />
-      {/* <TextField value={search} onChange={(e) => setSearch(e.target.value)} /> */}
+      {/* <TextField value={search} variant="outlined" onChange={(e) => setSearch(e.target.value)} className={classes.autoComplete} /> */}
     </div>
   );
 }

@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import matchSorter from "match-sorter";
 import { makeStyles, Button, Typography } from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
 
 import Pokemon from "./Pokemon";
 import Search from "./Search";
-const pokemons = require("../pokedex.json");
 
 const usePokemonsStyles = makeStyles((theme) => ({
   container: {
@@ -36,16 +37,40 @@ function PokemonsList() {
   const classes = usePokemonsStyles();
 
   const [pokemon, setPokemon] = useState("");
+  const [pokemons, setPokemons] = useState([]);
   const [search, setSearch] = useState(null);
 
-  const matchedPokemonsList = matchSorter(pokemons, search, { keys: ["name.english"] });
+  const fetchPokemons = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_API}/pokemons`
+      );
+      if (response.status === 200) {
+        setPokemons(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+      alert(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPokemons();
+  }, []);
+
+  const matchedPokemonsList = matchSorter(pokemons, search, {
+    keys: ["name.english"],
+  });
   return (
     <div className={classes.container}>
       <div className={classes.list}>
         <Typography variant="h6" className={classes.title}>
           Pokedex Builder
         </Typography>
-        <Search search={search} setSearch={setSearch} />
+        <Button variant="contained" color="primary">
+          <AddIcon />{" "}
+        </Button>
+        <Search search={search} setSearch={setSearch} pokemons={pokemons} />
         {matchedPokemonsList.map((pokemon) => (
           <div key={pokemon.id}>
             <Button
