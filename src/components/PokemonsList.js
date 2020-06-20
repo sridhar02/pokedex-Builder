@@ -68,7 +68,7 @@ function PokemonsList() {
           Pokedex Builder
         </Typography>
         <Button variant="contained" color="primary">
-          <AddIcon />{" "}
+          <AddIcon />
         </Button>
         <Search search={search} setSearch={setSearch} pokemons={pokemons} />
         {matchedPokemonsList.map((pokemon) => (
@@ -83,7 +83,7 @@ function PokemonsList() {
         ))}
       </div>
       <div className={classes.pokemonContainer}>
-        <Pokemon pokemon={pokemon} />
+        <Pokemon pokemon={pokemon} fetchPokemons={fetchPokemons} setPokemon={setPokemon}/>
       </div>
     </div>
   );
