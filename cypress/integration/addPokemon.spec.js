@@ -1,15 +1,12 @@
 describe("Add pokemon tests", () => {
   before(() => {
-    cy.visit("http://localhost:3001//");
+    cy.visit("/");
   });
 
   it("", () => {
     cy.server();
-    cy.route("POST", "http://localhost:3000/pokemons").as("add-pokemon");
-    // get pokemons from the request
-    cy.request("http://localhost:3000").should((response) => {
-      expect(response.status).to.eq(200);
-    });
+    cy.route("GET", `${Cypress.env("apiUrl")}/pokemons`).as("getPokemons");
+    cy.route("POST", `${Cypress.env("apiUrl")}/pokemons`).as("add-pokemon");
 
     // click on add pokemon
     cy.get('button[id="add pokemon"]').click();
@@ -29,7 +26,7 @@ describe("Add pokemon tests", () => {
       .should("have.value", "This is a grass type pokemon");
 
     cy.get("form").submit();
-
+    cy.wait("@getPokemons").should("have.property", "status", 200);
     cy.wait("@add-pokemon").should("have.property", "status", 201);
 
     cy.on("window:alert", (str) => {
