@@ -21,6 +21,10 @@ export default function UpdatePokemon({ pokemon, fetchPokemons, setPokemon }) {
 
   const dialogueClose = () => {
     setOpen(false);
+    setName(pokemon.name.english);
+    setType(pokemon.type);
+    setAttackLevel(pokemon.base.Attack);
+    setDefenceLevel(pokemon.base.Defense);
   };
 
   const handleSubmit = async (event, id) => {

@@ -22,6 +22,11 @@ export default function NewPokemon({ fetchPokemons }) {
 
   const dialogueClose = () => {
     setOpen(false);
+    setName("");
+    setType("");
+    setDescription("");
+    setAttackLevel("");
+    setDefenceLevel("");
   };
 
   const handleSubmit = async (event) => {
