@@ -3,14 +3,8 @@ import axios from "axios";
 
 import Card from "@material-ui/core/Card";
 import Chip from "@material-ui/core/Chip";
-import Alert from "@material-ui/lab/Alert";
 import CardContent from "@material-ui/core/CardContent";
-import {
-  makeStyles,
-  Typography,
-  Button,
-  recomposeColor,
-} from "@material-ui/core";
+import { makeStyles, Typography, Button } from "@material-ui/core";
 
 const usePokemonStyles = makeStyles((theme) => ({
   card: {
@@ -67,9 +61,9 @@ export default function Pokemon({ pokemon, fetchPokemons, setPokemon }) {
         ) : null}
         {pokemon && (
           <>
-            <div>
+            <Typography variant="subtitle1">
               Name: <strong>{pokemon.name.english}</strong>
-            </div>
+            </Typography>
             <br />
             <div className={classes.type}>
               <label className={classes.label}>Type: </label>
@@ -80,13 +74,13 @@ export default function Pokemon({ pokemon, fetchPokemons, setPokemon }) {
               ))}
             </div>
             <br />
-            <div>
+            <Typography variant="subtitle1">
               Attack Level : <strong>{pokemon.base.Attack}</strong>
-            </div>
+            </Typography>
             <br />
-            <div>
+            <Typography variant="subtitle1">
               Defense Level : <strong>{pokemon.base.Defense}</strong>
-            </div>
+            </Typography>
             <div className={classes.buttons}>
               <Button
                 variant="contained"
