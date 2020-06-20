@@ -5,6 +5,7 @@ import Card from "@material-ui/core/Card";
 import Chip from "@material-ui/core/Chip";
 import CardContent from "@material-ui/core/CardContent";
 import { makeStyles, Typography, Button } from "@material-ui/core";
+import UpdatePokemon from "./UpdatePokemon";
 
 const usePokemonStyles = makeStyles((theme) => ({
   card: {
@@ -49,7 +50,6 @@ export default function Pokemon({ pokemon, fetchPokemons, setPokemon }) {
       alert(error);
     }
   };
-  const updatePokemon = (id) => {};
 
   return (
     <Card className={classes.card}>
@@ -82,13 +82,14 @@ export default function Pokemon({ pokemon, fetchPokemons, setPokemon }) {
               Defense Level : <strong>{pokemon.base.Defense}</strong>
             </Typography>
             <div className={classes.buttons}>
-              <Button
+              {/* <Button
                 variant="contained"
                 color="primary"
                 onClick={() => updatePokemon(pokemon.id)}
               >
                 Update
-              </Button>
+              </Button> */}
+              <UpdatePokemon pokemon={pokemon} />
               <Button
                 variant="contained"
                 color="secondary"
