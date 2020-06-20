@@ -73,6 +73,7 @@ function PokemonsList() {
         {matchedPokemonsList.map((pokemon) => (
           <div key={pokemon.id}>
             <Button
+              id="Select a pokemon"
               className={classes.button}
               onClick={() => setPokemon(pokemon)}
             >

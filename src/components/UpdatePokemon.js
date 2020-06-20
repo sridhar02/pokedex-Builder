@@ -58,7 +58,12 @@ export default function UpdatePokemon({ pokemon, fetchPokemons, setPokemon }) {
 
   return (
     <div>
-      <Button variant="contained" color="primary" onClick={dialogueOpen}>
+      <Button
+        variant="contained"
+        color="primary"
+        id="update"
+        onClick={dialogueOpen}
+      >
         Update
       </Button>
       {
