@@ -30,14 +30,13 @@ export default function UpdatePokemon({ pokemon, fetchPokemons, setPokemon }) {
         name: {
           english: name,
         },
-        type:[type],
+        type: [type],
         base: {
           Attack: attackLevel,
           Defense: defenceLevel,
         },
         description,
       };
-      console.log(payload);
       const response = await axios.put(
         `${process.env.REACT_APP_BACKEND_API}/pokemons/${id}`,
         payload
@@ -45,8 +44,8 @@ export default function UpdatePokemon({ pokemon, fetchPokemons, setPokemon }) {
       dialogueClose();
       if ((response.status = 200)) {
         alert("Pokemon successfuly updated");
-        setPokemon(response.data);
         fetchPokemons();
+        setPokemon(response.data);
       }
     } catch (error) {
       alert(error);

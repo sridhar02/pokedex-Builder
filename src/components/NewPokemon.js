@@ -27,13 +27,28 @@ export default function NewPokemon({ fetchPokemons }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     dialogueClose();
-    let payload = { name, type, attackLevel, defenceLevel, description };
+    let payload = {
+      name: {
+        english: name,
+      },
+      type: [type],
+      base: {
+        Attack: attackLevel,
+        Defense: defenceLevel,
+      },
+      description,
+    };
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_API}/pokemons`,
         payload
       );
       if (response.status === 201) {
+        setName("");
+        setType("");
+        setDescription("");
+        setAttackLevel("");
+        setDefenceLevel("");
         fetchPokemons();
         alert("New Pokemon successfully created");
       }
