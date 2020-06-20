@@ -7,8 +7,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 
-export default function UpdatePokemon({ pokemon }) {
-  //   const [pokemon, setPokemon] = useState("");
+export default function UpdatePokemon({ pokemon, fetchPokemons, setPokemon }) {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState(pokemon.name.english);
   const [type, setType] = useState(pokemon.type);
@@ -24,21 +23,30 @@ export default function UpdatePokemon({ pokemon }) {
     setOpen(false);
   };
 
-  const handleSubmit = async (id) => {
+  const handleSubmit = async (event, id) => {
+    event.preventDefault();
     try {
       let payload = {
-        name,
-        type,
-        attackLevel,
-        defenceLevel,
+        name: {
+          english: name,
+        },
+        type:[type],
+        base: {
+          Attack: attackLevel,
+          Defense: defenceLevel,
+        },
         description,
       };
+      console.log(payload);
       const response = await axios.put(
         `${process.env.REACT_APP_BACKEND_API}/pokemons/${id}`,
         payload
       );
+      dialogueClose();
       if ((response.status = 200)) {
         alert("Pokemon successfuly updated");
+        setPokemon(response.data);
+        fetchPokemons();
       }
     } catch (error) {
       alert(error);
@@ -56,13 +64,13 @@ export default function UpdatePokemon({ pokemon }) {
           onClose={dialogueClose}
           aria-labelledby="create an new pokemon form"
         >
-          <form onSubmit={() => handleSubmit(pokemon.id)}>
+          <form onSubmit={(event) => handleSubmit(event, pokemon.id)}>
             <DialogTitle id="create an new pokemon form">
               Create a New pokemon
             </DialogTitle>
             <DialogContent>
               <TextField
-                defaultValue={pokemon.name.english}
+                value={name}
                 onChange={(event) => setName(event.target.value)}
                 autoFocus
                 margin="dense"
@@ -72,7 +80,7 @@ export default function UpdatePokemon({ pokemon }) {
                 fullWidth
               />
               <TextField
-                defaultValue={pokemon.type}
+                value={type}
                 onChange={(event) => setType(event.target.value)}
                 autoFocus
                 margin="dense"
@@ -82,7 +90,7 @@ export default function UpdatePokemon({ pokemon }) {
                 fullWidth
               />
               <TextField
-                defaultValue={pokemon.base.Attack}
+                value={attackLevel}
                 onChange={(event) => setAttackLevel(event.target.value)}
                 autoFocus
                 margin="dense"
@@ -92,7 +100,7 @@ export default function UpdatePokemon({ pokemon }) {
                 fullWidth
               />
               <TextField
-                defaultValue={pokemon.base.Defense}
+                value={defenceLevel}
                 onChange={(event) => setDefenceLevel(event.target.value)}
                 autoFocus
                 margin="dense"
@@ -117,7 +125,7 @@ export default function UpdatePokemon({ pokemon }) {
                 Cancel
               </Button>
               <Button type="submit" color="primary">
-                Create
+                Update
               </Button>
             </DialogActions>
           </form>

@@ -82,14 +82,11 @@ export default function Pokemon({ pokemon, fetchPokemons, setPokemon }) {
               Defense Level : <strong>{pokemon.base.Defense}</strong>
             </Typography>
             <div className={classes.buttons}>
-              {/* <Button
-                variant="contained"
-                color="primary"
-                onClick={() => updatePokemon(pokemon.id)}
-              >
-                Update
-              </Button> */}
-              <UpdatePokemon pokemon={pokemon} />
+              <UpdatePokemon
+                pokemon={pokemon}
+                fetchPokemons={fetchPokemons}
+                setPokemon={setPokemon}
+              />
               <Button
                 variant="contained"
                 color="secondary"
