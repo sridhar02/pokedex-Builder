@@ -63,7 +63,7 @@ export default function NewPokemon({ fetchPokemons }) {
   };
   return (
     <div>
-      <Button variant="contained" color="primary" onClick={dialogueOpen}>
+      <Button variant="contained" color="primary" id="add pokemon" onClick={dialogueOpen}>
         Add Pokemon <AddIcon />
       </Button>
       <Dialog
@@ -104,7 +104,7 @@ export default function NewPokemon({ fetchPokemons }) {
               onChange={(event) => setAttackLevel(event.target.value)}
               autoFocus
               margin="dense"
-              id="name"
+              id="attack"
               label="Attack Level"
               type="number"
               fullWidth
@@ -115,7 +115,7 @@ export default function NewPokemon({ fetchPokemons }) {
               onChange={(event) => setDefenceLevel(event.target.value)}
               autoFocus
               margin="dense"
-              id="name"
+              id="defense"
               label="Defense Level"
               type="number"
               fullWidth
@@ -125,7 +125,7 @@ export default function NewPokemon({ fetchPokemons }) {
               onChange={(event) => setDescription(event.target.value)}
               autoFocus
               margin="dense"
-              id="name"
+              id="description"
               label="Description"
               type="text"
               fullWidth
