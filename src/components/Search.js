@@ -29,7 +29,6 @@ export default function Search({ search, setSearch, pokemons }) {
           />
         )}
       />
-      {/* <TextField value={search} variant="outlined" onChange={(e) => setSearch(e.target.value)} className={classes.autoComplete} /> */}
     </div>
   );
 }

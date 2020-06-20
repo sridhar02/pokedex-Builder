@@ -1,11 +1,12 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import matchSorter from "match-sorter";
+
 import { makeStyles, Button, Typography } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
 
 import Pokemon from "./Pokemon";
 import Search from "./Search";
+import NewPokemon from "./NewPokemon";
 
 const usePokemonsStyles = makeStyles((theme) => ({
   container: {
@@ -67,9 +68,7 @@ function PokemonsList() {
         <Typography variant="h6" className={classes.title}>
           Pokedex Builder
         </Typography>
-        <Button variant="contained" color="primary">
-          <AddIcon />
-        </Button>
+        <NewPokemon fetchPokemons={fetchPokemons} />  
         <Search search={search} setSearch={setSearch} pokemons={pokemons} />
         {matchedPokemonsList.map((pokemon) => (
           <div key={pokemon.id}>
@@ -83,7 +82,11 @@ function PokemonsList() {
         ))}
       </div>
       <div className={classes.pokemonContainer}>
-        <Pokemon pokemon={pokemon} fetchPokemons={fetchPokemons} setPokemon={setPokemon}/>
+        <Pokemon
+          pokemon={pokemon}
+          fetchPokemons={fetchPokemons}
+          setPokemon={setPokemon}
+        />
       </div>
     </div>
   );
