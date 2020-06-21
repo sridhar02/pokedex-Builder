@@ -32,7 +32,7 @@ export default function ConfirmationDialogue({
           <Button autoFocus onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={() => deletePokemon(id)} color="primary">
+          <Button onClick={() => deletePokemon(id)} id="delete" color="primary">
             Delete
           </Button>
         </DialogActions>

@@ -100,7 +100,7 @@ export default function Pokemon({ pokemon, fetchPokemons, setPokemon }) {
               <Button
                 variant="contained"
                 color="secondary"
-                id="delete"
+                id="confimation"
                 onClick={() => handleClickOpen(pokemon.id)}
               >
                 Delete
