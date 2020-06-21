@@ -1,5 +1,3 @@
-/// <reference types="cypress" />;
-
 describe("Testing addition of a pokemon", () => {
   before(() => {
     cy.visit("/");
