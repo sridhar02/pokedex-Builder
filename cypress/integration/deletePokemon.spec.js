@@ -18,6 +18,10 @@ describe("delete pokemon tests", () => {
 
     cy.get('button[id="delete"]').click();
 
+    cy.on("window:alert", (str) => {
+      expect(str).to.equal(`Selected pokemon deleted succefully`);
+    });
+
     cy.wait("@delete-pokemon").should("have.property", "status", 200);
 
     cy.wait("@getPokemons").should("have.property", "status", 200);

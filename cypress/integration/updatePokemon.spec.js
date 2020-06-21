@@ -20,7 +20,11 @@ describe("Testing addition of a pokemon", () => {
     cy.get('input[id="defense"]').clear().type(56);
     cy.get('input[id="description"]').type("This is a thunder type pokemon");
 
-    cy.get('button[type="submit"]').click();
+    cy.get("form").submit();
+
+    cy.on("window:alert", (str) => {
+      expect(str).to.equal(`Pokemon successfuly updated`);
+    });
 
     cy.wait("@update-pokemon").should("have.property", "status", 200);
     cy.wait("@getPokemons").should("have.property", "status", 200);
