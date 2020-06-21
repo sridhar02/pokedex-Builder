@@ -1,9 +1,11 @@
-describe("Add pokemon tests", () => {
+/// <reference types="cypress" />;
+
+describe("Testing addition of a pokemon", () => {
   before(() => {
     cy.visit("/");
   });
 
-  it("", () => {
+  it("Add pokemon test", () => {
     cy.server();
     cy.route("GET", `${Cypress.env("apiUrl")}/pokemons`).as("getPokemons");
     cy.route("POST", `${Cypress.env("apiUrl")}/pokemons`).as("add-pokemon");
