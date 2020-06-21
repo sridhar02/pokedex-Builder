@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 import Card from "@material-ui/core/Card";
 import Chip from "@material-ui/core/Chip";
 import CardContent from "@material-ui/core/CardContent";
 import { makeStyles, Typography, Button } from "@material-ui/core";
+
 import UpdatePokemon from "./UpdatePokemon";
+import ConfirmationDialogue from "./ConfirmationDialogue";
 
 const usePokemonStyles = makeStyles((theme) => ({
   card: {
@@ -33,16 +35,25 @@ const usePokemonStyles = makeStyles((theme) => ({
 
 export default function Pokemon({ pokemon, fetchPokemons, setPokemon }) {
   const classes = usePokemonStyles();
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = (id) => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const deletePokemon = async (id) => {
-    alert("Are you sure want delete this pokemon");
+    handleClose();
     try {
       const response = await axios.delete(
         `${process.env.REACT_APP_BACKEND_API}/pokemons/${id}`
       );
       if (response.status === 200) {
-        alert("Selected pokemon deleted succefully");
         setPokemon(null);
+        setTimeout(() => alert("Selected pokemon deleted succefully"), 100);
         fetchPokemons();
       }
     } catch (error) {
@@ -90,10 +101,16 @@ export default function Pokemon({ pokemon, fetchPokemons, setPokemon }) {
                 variant="contained"
                 color="secondary"
                 id="delete"
-                onClick={() => deletePokemon(pokemon.id)}
+                onClick={() => handleClickOpen(pokemon.id)}
               >
                 Delete
               </Button>
+              <ConfirmationDialogue
+                open={open}
+                handleClose={handleClose}
+                deletePokemon={deletePokemon}
+                id={pokemon.id}
+              />
             </div>
           </>
         )}
