@@ -72,7 +72,7 @@ export default function Pokemon({ pokemon, fetchPokemons, setPokemon }) {
         {pokemon && (
           <>
             <Typography variant="subtitle1">
-              Name: <strong>{pokemon.name.english}</strong>
+              Name: <strong id="name">{pokemon.name.english}</strong>
             </Typography>
             <br />
             <div className={classes.type}>
